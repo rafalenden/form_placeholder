@@ -1,0 +1,124 @@
+<?php
+
+/**
+ * Implementation of hook_init().
+ */
+function form_placeholder_init() {
+  $path = drupal_get_path('module', 'form_placeholder');
+
+  drupal_add_library('form_placeholder', 'jquery.placeholder');
+
+  drupal_add_js($path . '/js/form_placeholder.js');
+  drupal_add_js(array('form_placeholder' => array(
+      'include' => variable_get('form_placeholder_include', ''),
+      'exclude' => variable_get('form_placeholder_exclude', ''),
+      'required' => variable_get('form_placeholder_required', 'append'),
+    )), 'setting');
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function form_placeholder_menu() {
+  $items = array();
+  $items['admin/config/user-interface/form-placeholder'] = array(
+    'title' => 'Form placeholder',
+    'description' => 'Use field label as placeholder for all elements in choosen form.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('form_placeholder_admin_settings'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer form placeholder'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function form_placeholder_permission() {
+  return array(
+    'administer form placeholder' => array(
+      'title' => t('Administer form placeholder settings'),
+    ),
+  );
+}
+
+function form_placeholder_admin_settings() {
+  $form = array();
+
+  $rows = array(
+    array('input, textarea', t('Use all single line text fields and textareas on site.')),
+    array('.your-form-class *', t('Use all text fields in given form class.')),
+    array('#your-form-id *', t('Use all text fields in given form id.')),
+    array('#your-form-id *:not(textarea)', t('Use all single line text fields but  not textareas in given form id.')),
+    array('#your-form-id input:not(input[type=password])', t('Use all single line text fields but not password text fields in given form id.')),
+  );
+
+  $table = array(
+    'header' => array(t('CSS selector'), t('Description')),
+    'rows' => $rows,
+  );
+
+  $form['selectors'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Visibility settings'),
+  );
+
+  $form['selectors']['form_placeholder_include'] = array(
+    '#type' => 'textfield',
+    '#size' => 80,
+    '#title' => t('Include text fields matching the pattern'),
+    '#description' => t('CSS selector.'),
+    '#maxlength' => NULL,
+    '#default_value' => variable_get('form_placeholder_include', ''),
+  );
+
+  $form['selectors']['form_placeholder_exclude'] = array(
+    '#type' => 'textfield',
+    '#size' => 80,
+    '#title' => t('Exclude text fields matching the pattern'),
+    '#description' => t('CSS selector.'),
+    '#maxlength' => NULL,
+    '#default_value' => variable_get('form_placeholder_exclude', ''),
+  );
+  
+  $form['selectors']['examples'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#title' => t('Examples'),
+  );
+  
+    $form['selectors']['examples']['content'] = array(
+    '#markup' => theme('table', $table),
+  );
+
+  $form['form_placeholder_required'] = array(
+    '#type' => 'radios',
+    '#title' => t('Required field marker'),
+    '#options' => array(
+      'append' => t('Append star after text field'),
+      'leave' => t('Leave star inside placeholder'),
+      'remove' => t('Remove star'),
+      'text' => t('Instead of star append text (required) to placeholder'),
+    ),
+    '#default_value' => variable_get('form_placeholder_required', 'append'),
+  );
+
+  return system_settings_form($form);
+}
+
+function form_placeholder_library() {
+
+  $path = drupal_get_path('module', 'form_placeholder');
+
+  $libraries['jquery.placeholder'] = array(
+    'title' => 'jQuery Placeholder',
+    'website' => 'http://webcloud.se/code/jQuery-Placeholder/',
+    'version' => '?',
+    'js' => array(
+      $path . '/lib/jquery.placeholder.min.js' => array(),
+    ),
+  );
+  return $libraries;
+}
