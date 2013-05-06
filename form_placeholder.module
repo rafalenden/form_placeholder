@@ -1,7 +1,12 @@
 <?php
 
 /**
- * Implementation of hook_init().
+ * @file
+ * Use field label as placeholder for all elements in choosen form.
+ */
+
+/**
+ * Implements of hook_init().
  */
 function form_placeholder_init() {
   $path = drupal_get_path('module', 'form_placeholder');
@@ -9,7 +14,8 @@ function form_placeholder_init() {
   drupal_add_library('form_placeholder', 'jquery.placeholder');
 
   drupal_add_js($path . '/js/form_placeholder.js');
-  drupal_add_js(array('form_placeholder' => array(
+  drupal_add_js(array(
+    'form_placeholder' => array(
       'include' => variable_get('form_placeholder_include', ''),
       'exclude' => variable_get('form_placeholder_exclude', ''),
       'required' => variable_get('form_placeholder_required', 'append'),
@@ -17,7 +23,7 @@ function form_placeholder_init() {
 }
 
 /**
- * Implementation of hook_menu().
+ * Implements of hook_menu().
  */
 function form_placeholder_menu() {
   $items = array();
@@ -43,6 +49,9 @@ function form_placeholder_permission() {
   );
 }
 
+/**
+ * Configuration page.
+ */
 function form_placeholder_admin_settings() {
   $form = array();
 
@@ -63,7 +72,6 @@ function form_placeholder_admin_settings() {
     '#type' => 'fieldset',
     '#title' => t('Visibility settings'),
   );
-
   $form['selectors']['form_placeholder_include'] = array(
     '#type' => 'textfield',
     '#size' => 80,
@@ -72,7 +80,6 @@ function form_placeholder_admin_settings() {
     '#maxlength' => NULL,
     '#default_value' => variable_get('form_placeholder_include', ''),
   );
-
   $form['selectors']['form_placeholder_exclude'] = array(
     '#type' => 'textfield',
     '#size' => 80,
@@ -81,18 +88,15 @@ function form_placeholder_admin_settings() {
     '#maxlength' => NULL,
     '#default_value' => variable_get('form_placeholder_exclude', ''),
   );
-  
   $form['selectors']['examples'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
     '#title' => t('Examples'),
   );
-  
-    $form['selectors']['examples']['content'] = array(
+  $form['selectors']['examples']['content'] = array(
     '#markup' => theme('table', $table),
   );
-
   $form['form_placeholder_required'] = array(
     '#type' => 'radios',
     '#title' => t('Required field marker'),
@@ -108,6 +112,9 @@ function form_placeholder_admin_settings() {
   return system_settings_form($form);
 }
 
+/**
+ * Load jQuery plugin.
+ */
 function form_placeholder_library() {
 
   $path = drupal_get_path('module', 'form_placeholder');

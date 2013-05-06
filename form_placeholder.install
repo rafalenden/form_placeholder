@@ -1,7 +1,12 @@
 <?php
 
 /**
- * Implementation of hook_uninstall().
+ * @file
+ * Uninstall function for the form_placeholder module.
+ */
+
+/**
+ * Implements of hook_uninstall().
  */
 function form_placeholder_uninstall() {
   variable_del('form_placeholder_include');
