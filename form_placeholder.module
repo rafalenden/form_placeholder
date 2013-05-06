@@ -111,7 +111,7 @@ function form_placeholder_admin_settings() {
 }
 
 /**
- * Load jQuery plugin.
+ * Implements hook_library().
  */
 function form_placeholder_library() {
 
