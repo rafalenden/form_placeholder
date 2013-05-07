@@ -32,7 +32,6 @@ function form_placeholder_menu() {
     'description' => 'Use field label as placeholder for all elements in choosen form.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('form_placeholder_admin_settings'),
-    'access callback' => 'user_access',
     'access arguments' => array('administer form placeholder'),
   );
   return $items;
@@ -76,14 +75,12 @@ function form_placeholder_admin_settings() {
     '#type' => 'textarea',
     '#title' => t('Include text fields matching the pattern'),
     '#description' => t('CSS selectors (one per line).'),
-    '#maxlength' => NULL,
     '#default_value' => variable_get('form_placeholder_include', ''),
   );
   $form['selectors']['form_placeholder_exclude'] = array(
     '#type' => 'textarea',
     '#title' => t('Exclude text fields matching the pattern'),
     '#description' => t('CSS selectors (one per line).'),
-    '#maxlength' => NULL,
     '#default_value' => variable_get('form_placeholder_exclude', ''),
   );
   $form['selectors']['examples'] = array(
