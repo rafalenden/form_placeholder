@@ -1,3 +1,4 @@
-1. Enable the 'Form placeholder' module
-2. Go to configuraction page at 'admin/config/user-interface/form-placeholder'
-3. Enter CSS selector for textfields you want to add a placeholder
+1. Unpack and move directory "form_placeholder" to your modules directory.
+2. Enable it in the modules list of your site.
+3. Go to configuraction page at "admin/config/user-interface/form-placeholder".
+4. Enter CSS selector for textfields you want to add a placeholder.
