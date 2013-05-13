@@ -56,7 +56,7 @@ function form_placeholder_admin_settings() {
       'append' => t('Append star after text field'),
       'leave' => t('Leave star inside placeholder'),
       'remove' => t('Remove star'),
-      'text' => t('Instead of star append text (required) to placeholder'),
+      'text' => t('Instead of star append text "(required)" to placeholder'),
     ),
     '#default_value' => variable_get('form_placeholder_required', 'append'),
   );
