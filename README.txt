@@ -22,4 +22,4 @@ It's also possible to convert form elements by classes:
 1. form-placeholder-[include/exclude]-children
    Include/exclude all children of given class.
 2. form-placeholder-[include/exclude]
-   Include/exclude all single element.
+   Include/exclude single element.
