@@ -9,7 +9,7 @@
       var exclude = Drupal.settings.form_placeholder.exclude;
       exclude += ', .form-placeholder-exclude-children *';
       exclude += ', .form-placeholder-exclude';
-      
+
       var required = Drupal.settings.form_placeholder.required;
 
       $(include, context).not(exclude).each(function() {

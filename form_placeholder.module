@@ -89,12 +89,12 @@ function form_placeholder_element_info_alter(&$types) {
  * @param array $element
  *   The render array element.
  *
- * @return
+ * @return array $element
  *   The processed element.
  */
 function form_placeholder_process_element($element) {
   if (isset($element['#form_placeholder'])) {
-    $action = $element['#form_placeholder'] == TRUE ? 'include' : 'exclude';
+    $action = ($element['#form_placeholder'] == TRUE) ? 'include' : 'exclude';
     if ($element['#type'] == 'form') {
       $element['#attributes']['class'][] = 'form-placeholder-'.$action.'-children';
     }
