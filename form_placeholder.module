@@ -66,3 +66,42 @@ function form_placeholder_library() {
   );
   return $libraries;
 }
+
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function form_placeholder_element_info_alter(&$types) {
+  foreach (array_keys($types) as $type) {
+    switch ($type) {
+      case 'form':
+      case 'textarea':
+      case 'textfield':
+        $types[$type]['#process'][] = 'form_placeholder_process_element';
+        break;
+    }
+  }
+}
+
+/**
+ * Element process callback.
+ *
+ * @param array $element
+ *   The render array element.
+ *
+ * @return
+ *   The processed element.
+ */
+function form_placeholder_process_element($element) {
+  if (isset($element['#form_placeholder'])) {
+    $action = $element['#form_placeholder'] == TRUE ? 'include' : 'exclude';
+    if ($element['#type'] == 'form') {
+      $element['#attributes']['class'][] = 'form-placeholder-'.$action.'-children';
+    }
+    else {
+      $element['#attributes']['class'][] = 'form-placeholder-'.$action;
+    }
+  }
+
+  return $element;
+}

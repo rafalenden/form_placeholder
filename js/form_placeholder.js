@@ -3,7 +3,13 @@
   Drupal.behaviors.form_placeholder = {
     attach: function(context, settings) {
       var include = Drupal.settings.form_placeholder.include;
+      include += ', .form-placeholder-include-children *';
+      include += ', .form-placeholder-include';
+
       var exclude = Drupal.settings.form_placeholder.exclude;
+      exclude += ', .form-placeholder-exclude-children *';
+      exclude += ', .form-placeholder-exclude';
+      
       var required = Drupal.settings.form_placeholder.required;
 
       $(include, context).not(exclude).each(function() {
@@ -15,7 +21,7 @@
         }
 
         form = textfield.closest('form');
-        label = form.find('label[for=' + textfield.attr('id') + ']');
+        label = form.find('label[for=' + this.id + ']');
 
         if (required == 'append') {
           label.find('.form-required').insertAfter(textfield).prepend('&nbsp;');
