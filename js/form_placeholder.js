@@ -23,13 +23,13 @@
         form = textfield.closest('form');
         label = form.find('label[for=' + this.id + ']');
 
-        if (required == 'append') {
+        if (required === 'append') {
           label.find('.form-required').insertAfter(textfield).prepend('&nbsp;');
         }
-        else if (required == 'remove') {
+        else if (required === 'remove') {
           label.find('.form-required').remove();
         }
-        else if (required == 'text') {
+        else if (required === 'text') {
           label.find('.form-required').text('(' + Drupal.t('required') + ')');
         }
 
