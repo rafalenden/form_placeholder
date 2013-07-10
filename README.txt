@@ -4,6 +4,11 @@ Installation
 2. Enable it in the modules list of your site.
 3. Go to configuraction page at "admin/config/user-interface/form-placeholder".
 4. Specify CSS selectors for textfields you want to add a placeholder.
+5. For older browsers not supporting "placeholder" attribute you have to:
+  1. Install Libraries module (http://drupal.org/project/libraries)
+  2. Download jQuery Placeholder plugin from https://github.com/mathiasbynens/jquery-placeholder
+  3. Rename downloaded directory to "jquery.placeholder" and place it under
+     "sites/all/libraries" so the file "sites/all/libraries/jquery.placeholder/jquery.placeholder.min.js" will be accessible
 
 
 Usage

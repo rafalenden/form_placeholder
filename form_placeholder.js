@@ -36,7 +36,11 @@
         label.hide();
 
         textfield.attr('placeholder', label.text());
-        textfield.placeholder();
+        
+        // If the jQuery Placeholder plugin is loaded correctly.
+        if (Drupal.settings.form_placeholder.fallback_support) {
+          textfield.placeholder();
+        }
       });
     }
   }
