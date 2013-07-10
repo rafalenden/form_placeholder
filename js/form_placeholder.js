@@ -10,7 +10,7 @@
       exclude += ', .form-placeholder-exclude-children *';
       exclude += ', .form-placeholder-exclude';
 
-      var required = Drupal.settings.form_placeholder.required;
+      var required_indicator = Drupal.settings.form_placeholder.required_indicator;
 
       $(include, context).not(exclude).each(function() {
         textfield = $(this);
@@ -23,13 +23,13 @@
         form = textfield.closest('form');
         label = form.find('label[for=' + this.id + ']');
 
-        if (required === 'append') {
+        if (required_indicator === 'append') {
           label.find('.form-required').insertAfter(textfield).prepend('&nbsp;');
         }
-        else if (required === 'remove') {
+        else if (required_indicator === 'remove') {
           label.find('.form-required').remove();
         }
-        else if (required === 'text') {
+        else if (required_indicator === 'text') {
           label.find('.form-required').text('(' + Drupal.t('required') + ')');
         }
 

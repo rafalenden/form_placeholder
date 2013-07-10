@@ -49,7 +49,7 @@ function form_placeholder_admin_settings() {
   $form['selectors']['examples']['content'] = array(
     '#markup' => theme('table', $table),
   );
-  $form['form_placeholder_required'] = array(
+  $form['form_placeholder_required_indicator'] = array(
     '#type' => 'radios',
     '#title' => t('Required field marker'),
     '#options' => array(
@@ -58,7 +58,7 @@ function form_placeholder_admin_settings() {
       'remove' => t('Remove star'),
       'text' => t('Instead of star append text "(required)" to placeholder'),
     ),
-    '#default_value' => variable_get('form_placeholder_required', 'append'),
+    '#default_value' => variable_get('form_placeholder_required_indicator', 'append'),
   );
 
   return system_settings_form($form);
