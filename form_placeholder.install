@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_enable();
+ * Implements hook_enable().
  */
 function form_placeholder_enable() {
   drupal_set_message(t(
@@ -17,7 +17,7 @@ function form_placeholder_enable() {
 }
 
 /**
- * Implements of hook_uninstall().
+ * Implements hook_uninstall().
  */
 function form_placeholder_uninstall() {
   variable_del('form_placeholder_include');
