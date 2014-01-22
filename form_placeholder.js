@@ -3,11 +3,16 @@
   Drupal.behaviors.form_placeholder = {
     attach: function(context, settings) {
       var include = Drupal.settings.form_placeholder.include;
-      include += ', .form-placeholder-include-children *';
+      if (include) {
+        include += ', ';
+      }
+      include += '.form-placeholder-include-children *';
       include += ', .form-placeholder-include';
-
       var exclude = Drupal.settings.form_placeholder.exclude;
-      exclude += ', .form-placeholder-exclude-children *';
+      if (exclude) {
+        exclude += ', ';
+      }
+      exclude += '.form-placeholder-exclude-children *';
       exclude += ', .form-placeholder-exclude';
 
       var required_indicator = Drupal.settings.form_placeholder.required_indicator;

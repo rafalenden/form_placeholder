@@ -43,7 +43,7 @@ function form_placeholder_libraries_info() {
     'version' => '2.0',
     'files' => array(
       'js' => array(
-        'jquery.placeholder.min.js',
+        'jquery.placeholder.js',
       ),
     ),
     'variants' => array(
@@ -108,7 +108,7 @@ function form_placeholder_process_element($element) {
 
 /**
  * Adds placeholder to form element.
- * 
+ *
  * @param array $element
  *   Form API element.
  */
@@ -117,7 +117,7 @@ function form_placeholder_attach(&$element) {
   if (module_exists('libraries') && ($path = libraries_get_path('jquery.placeholder'))) {
     $element['#attached']['js'][] = array(
       'type' => 'file',
-      'data' => $path . '/jquery.placeholder.min.js',
+      'data' => $path . '/jquery.placeholder.js',
     );
     $fallback_support = TRUE;
   }
