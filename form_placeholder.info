@@ -1,4 +1,4 @@
-name = Form placeholder
+name = Form Placeholder
 description = Use field label as placeholder for all elements in choosen form.
 package = User interface
 core = 7.x
