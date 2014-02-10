@@ -8,7 +8,7 @@ Installation
   1. Install Libraries module (http://drupal.org/project/libraries)
   2. Download jQuery Placeholder plugin from https://github.com/mathiasbynens/jquery-placeholder
   3. Rename downloaded directory to "jquery.placeholder" and place it under
-     "sites/all/libraries" so the file "sites/all/libraries/jquery.placeholder/jquery.placeholder.min.js" will be accessible
+     "sites/all/libraries" so the file "sites/all/libraries/jquery.placeholder/jquery.placeholder.js" will be accessible
 
 
 Usage

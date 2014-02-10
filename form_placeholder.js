@@ -38,7 +38,7 @@
           $label.find('.form-required').text('(' + Drupal.t('required') + ')');
         }
 
-        $textfield.attr('placeholder', $label.text().trim());
+        $textfield.attr('placeholder', $.trim($label.text()));
 
         // If the jQuery Placeholder plugin is loaded correctly.
         if (Drupal.settings.form_placeholder.fallback_support) {

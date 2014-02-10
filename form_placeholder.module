@@ -47,13 +47,6 @@ function form_placeholder_libraries_info() {
       ),
     ),
     'variants' => array(
-      'minified' => array(
-        'files' => array(
-          'js' => array(
-            'jquery.placeholder.min.js',
-          ),
-        ),
-      ),
       'source' => array(
         'files' => array(
           'js' => array(
