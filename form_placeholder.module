@@ -136,3 +136,10 @@ function form_placeholder_attach(&$element) {
     'data' => drupal_get_path('module', 'form_placeholder') . '/form_placeholder.js',
   );
 }
+
+/**
+ * Implementation of hook_form_BASE_FORM_ID_alter().
+ */
+function form_placeholder_form_webform_client_form_alter(&$form, &$form_state, $form_id) {
+  $form['#process'][] = 'form_placeholder_process_element';
+}
