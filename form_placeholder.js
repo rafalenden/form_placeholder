@@ -46,7 +46,7 @@
           $textfield.placeholder();
         }
         // If user browser is not < IE 10.
-        else if ($.browser.msie != true || ($.browser.msie == true && $.browser.version > 9)) {
+        else if ($textfield.attr('placeholder') !== undefined && $textfield.attr('placeholder') !== '') {
           $label.hide();
         }
       });
