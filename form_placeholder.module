@@ -68,6 +68,7 @@ function form_placeholder_element_info_alter(&$types) {
       case 'form':
       case 'textarea':
       case 'textfield':
+      case 'password':
         $types[$type]['#process'][] = 'form_placeholder_process_element';
         break;
     }
