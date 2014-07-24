@@ -28,6 +28,10 @@ function form_placeholder_drush_command() {
  * Command to download the jQuery Placeholder plugin.
  */
 function drush_download_placeholder_library() {
+  if (!module_exists('libraries')) {
+    return drush_log(dt("Libraries module doesn't exists."), 'error');
+  }
+
   $args = func_get_args();
   if (!empty($args[0])) {
     $path = $args[0];
