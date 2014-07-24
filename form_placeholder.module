@@ -39,8 +39,8 @@ function form_placeholder_libraries_info() {
   $libraries['jquery.placeholder'] = array(
     'title' => 'jQuery Placeholder',
     'vendor url' => 'https://github.com/mathiasbynens/jquery-placeholder',
-    'download url' => 'https://github.com/mathiasbynens/jquery-placeholder/archive/master.zip',
-    'version' => '2.0',
+    'download url' => 'https://github.com/mathiasbynens/jquery-placeholder/archive/v2.0.8.zip',
+    'version' => '2.0.8',
     'files' => array(
       'js' => array(
         'jquery.placeholder.js',
