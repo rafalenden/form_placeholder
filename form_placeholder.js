@@ -26,7 +26,7 @@
       var required_indicator = settings.form_placeholder.required_indicator;
 
       $(include, context).not(exclude).each(function() {
-        $textfield = $(this);
+        var $textfield = $(this);
 
         // Check if element is a textfield.
         if (!$textfield.is('input[type=text], input[type=email], input[type=password], textarea')) {
@@ -34,8 +34,8 @@
         }
         // Placeholder is supported.
         else if (Drupal.form_placeholder.placeholderIsSupported() || settings.form_placeholder.fallback_support) {
-          $form = $textfield.closest('form');
-          $label = $form.find('label[for=' + this.id + ']');
+          var $form = $textfield.closest('form');
+          var $label = $form.find('label[for=' + this.id + ']');
 
           if (required_indicator === 'append') {
             $label.find('.form-required').insertAfter($textfield).prepend('&nbsp;');
