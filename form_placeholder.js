@@ -47,8 +47,10 @@
             $label.find('.form-required').text('(' + Drupal.t('required') + ')');
           }
 
-          $textfield.attr('placeholder', $.trim($label.text()));
-          $label.hide();
+          if (!$textfield.attr('placeholder')) {
+            $textfield.attr('placeholder', $.trim($label.text()));
+            $label.hide();
+          }
 
           // Fallback support for older browsers.
           if (!Drupal.form_placeholder.placeholderIsSupported() && settings.form_placeholder.fallback_support) {
