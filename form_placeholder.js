@@ -10,6 +10,11 @@
 
   Drupal.behaviors.form_placeholder = {
     attach: function(context, settings) {
+      // In some cases settings after ajax form submit could contain only
+      // settings from response but not all Drupal.settings data.
+      if (!settings.hasOwnProperty('form_placeholder')) {
+        settings = Drupal.settings;
+      }
       var include = settings.form_placeholder.include;
       if (include) {
         include += ', ';
