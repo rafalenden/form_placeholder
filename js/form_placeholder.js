@@ -2,6 +2,10 @@
 
   Drupal.form_placeholder = {};
 
+  Drupal.form_placeholder.elementIsSupported = function($element) {
+    return $element.is('input[type=text], input[type=email], input[type=password], textarea');
+  };
+
   Drupal.form_placeholder.placeholderIsSupported = function() {
     // Opera Mini v7 doesn’t support placeholder although its DOM seems to indicate so.
     var isOperaMini = Object.prototype.toString.call(window.operamini) == '[object OperaMini]';
@@ -32,13 +36,11 @@
 
       $(include, context).not(exclude).each(function() {
         var $textfield = $(this);
+        var elementSupported = Drupal.form_placeholder.elementIsSupported($textfield);
+        var placeholderSupported = Drupal.form_placeholder.placeholderIsSupported() || $().placeholder;
 
-        // Check if element is a textfield.
-        if (!$textfield.is('input[type=text], input[type=email], input[type=password], textarea')) {
-          return;
-        }
         // Placeholder is supported.
-        else if (Drupal.form_placeholder.placeholderIsSupported() || settings.form_placeholder.fallback_support) {
+        if (elementSupported && placeholderSupported) {
           var $form = $textfield.closest('form');
           var $label = $form.find('label[for=' + this.id + ']');
 
@@ -58,7 +60,7 @@
           }
 
           // Fallback support for older browsers.
-          if (!Drupal.form_placeholder.placeholderIsSupported() && settings.form_placeholder.fallback_support) {
+          if (!Drupal.form_placeholder.placeholderIsSupported() && $().placeholder) {
             $textfield.placeholder();
           }
         }
