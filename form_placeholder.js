@@ -34,7 +34,7 @@
         var $textfield = $(this);
 
         // Check if element is a textfield.
-        if (!$textfield.is('input[type=text], input[type=email], input[type=password], textarea')) {
+        if (!$textfield.is('input[type=text], input[type=email], input[type=password], input[type=tel], input[type=search], textarea')) {
           return;
         }
         // Placeholder is supported.
