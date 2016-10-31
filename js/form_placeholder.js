@@ -69,7 +69,7 @@
 
           if (!$textfield.attr('placeholder')) {
             $textfield.attr('placeholder', placeholder);
-            $label.hide();
+            $label.addClass('visually-hidden');
           }
 
           // Fallback support for older browsers.
