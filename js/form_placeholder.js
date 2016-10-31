@@ -3,7 +3,7 @@
   Drupal.form_placeholder = {};
 
   Drupal.form_placeholder.elementIsSupported = function($element) {
-    return $element.is('input[type=text], input[type=email], input[type=password], textarea');
+    return $element.is('input[type=text], input[type=date], input[type=email], input[type=url], input[type=tel], input[type=password], textarea');
   };
 
   Drupal.form_placeholder.placeholderIsSupported = function() {
