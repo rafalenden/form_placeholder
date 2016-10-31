@@ -104,6 +104,7 @@ class SettingsForm extends ConfigFormBase {
         'leave' => t('Leave star inside placeholder'),
         'remove' => t('Remove star'),
         'text' => t('Instead of star append text "(required)" to placeholder'),
+        'optional' => t('Append text "(optional)" to non-required fields'),
       ],
       '#default_value' => $config->get('required_indicator'),
     ];

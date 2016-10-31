@@ -62,6 +62,9 @@
                 break;
             }
           }
+          else if (required_indicator === 'optional') {
+            placeholder += ' (' + Drupal.t('optional') + ')';
+          }
 
           if (!$textfield.attr('placeholder')) {
             $textfield.attr('placeholder', placeholder);
