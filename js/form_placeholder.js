@@ -43,19 +43,28 @@
         if (elementSupported && placeholderSupported) {
           var $form = $textfield.closest('form');
           var $label = $form.find('label[for=' + this.id + ']');
+          var placeholder = $.trim($label.text());
 
-          if (required_indicator === 'append') {
-            $label.find('.form-required').insertAfter($textfield).prepend('&nbsp;');
-          }
-          else if (required_indicator === 'remove') {
-            $label.find('.form-required').remove();
-          }
-          else if (required_indicator === 'text') {
-            $label.find('.form-required').text('(' + Drupal.t('required') + ')');
+          // Handle required field marker.
+          if ($label.hasClass('form-required')) {
+            switch (required_indicator) {
+              case 'append':
+                $textfield.after('<span class="form-required"></span>');
+                break;
+              case 'remove':
+                // It's removed anyway, so we don't have to do anything.
+                break;
+              case 'leave':
+                placeholder += ' *';
+                break;
+              case 'text':
+                placeholder += ' (' + Drupal.t('required') + ')';
+                break;
+            }
           }
 
           if (!$textfield.attr('placeholder')) {
-            $textfield.attr('placeholder', $.trim($label.text()));
+            $textfield.attr('placeholder', placeholder);
             $label.hide();
           }
 
