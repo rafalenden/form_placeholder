@@ -55,7 +55,7 @@
 
           if (!$textfield.attr('placeholder')) {
             $textfield.attr('placeholder', $.trim($label.text()));
-            $label.hide();
+            $label.addClass('element-invisible');
           }
 
           // Fallback support for older browsers.
