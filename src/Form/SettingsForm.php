@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\form_placeholder\Form\SettingsForm.
- */
-
 namespace Drupal\form_placeholder\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
