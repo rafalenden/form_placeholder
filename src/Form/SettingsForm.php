@@ -41,65 +41,65 @@ class SettingsForm extends ConfigFormBase {
     $form['selectors'] = [
       '#type' => 'details',
       '#open' => TRUE,
-      '#title' => t('Visibility settings'),
+      '#title' => $this->t('Visibility settings'),
     ];
 
     $form['selectors']['included_selectors'] = [
       '#type' => 'textarea',
-      '#title' => t('Include text fields matching the pattern'),
-      '#description' => t('CSS selectors (one per line).'),
+      '#title' => $this->t('Include text fields matching the pattern'),
+      '#description' => $this->t('CSS selectors (one per line).'),
       '#default_value' => $config->get('included_selectors'),
     ];
 
     $form['selectors']['excluded_selectors'] = [
       '#type' => 'textarea',
-      '#title' => t('Exclude text fields matching the pattern'),
-      '#description' => t('CSS selectors (one per line).'),
+      '#title' => $this->t('Exclude text fields matching the pattern'),
+      '#description' => $this->t('CSS selectors (one per line).'),
       '#default_value' => $config->get('excluded_selectors'),
     ];
 
     $form['selectors']['examples'] = [
       '#type' => 'details',
       '#open' => FALSE,
-      '#title' => t('Examples'),
+      '#title' => $this->t('Examples'),
     ];
 
     $form['selectors']['examples']['content'] = [
       '#type' => 'table',
-      '#header' => [t('CSS selector'), t('Description')],
+      '#header' => [$this->t('CSS selector'), $this->t('Description')],
       '#rows' => [
         [
           'input, textarea',
-          t('Use all single line text fields and textareas on site.'),
+          $this->t('Use all single line text fields and textareas on site.'),
         ],
         [
           '.your-form-class *',
-          t('Use all text fields in given form class.'),
+          $this->t('Use all text fields in given form class.'),
         ],
         [
           '#your-form-id *',
-          t('Use all text fields in given form id.'),
+          $this->t('Use all text fields in given form id.'),
         ],
         [
           '#your-form-id *:not(textarea)',
-          t('Use all single line text fields but not textareas in given form id.'),
+          $this->t('Use all single line text fields but not textareas in given form id.'),
         ],
         [
           '#your-form-id input:not(input[type=password])',
-          t('Use all single line text fields but not password text fields in given form id.'),
+          $this->t('Use all single line text fields but not password text fields in given form id.'),
         ],
       ],
     ];
 
     $form['required_indicator'] = [
       '#type' => 'radios',
-      '#title' => t('Required field marker'),
+      '#title' => $this->t('Required field marker'),
       '#options' => [
-        'append' => t('Append star after text field'),
-        'leave' => t('Leave star inside placeholder'),
-        'remove' => t('Remove star'),
-        'text' => t('Instead of star append text "(required)" to placeholder'),
-        'optional' => t('Append text "(optional)" to non-required fields'),
+        'append' => $this->t('Append star after text field'),
+        'leave' => $this->t('Leave star inside placeholder'),
+        'remove' => $this->t('Remove star'),
+        'text' => $this->t('Instead of star append text "(required)" to placeholder'),
+        'optional' => $this->t('Append text "(optional)" to non-required fields'),
       ],
       '#default_value' => $config->get('required_indicator'),
     ];

@@ -10,17 +10,19 @@
  */
 function form_placeholder_element_info_alter(array &$types) {
   foreach (array_keys($types) as $type) {
-    switch ($type) {
-      case 'form':
-      case 'textarea':
-      case 'textfield':
-      case 'tel':
-      case 'url':
-      case 'number':
-      case 'password':
-      case 'password_confirm':
-        $types[$type]['#process'][] = 'form_placeholder_process_element';
-        break;
+    $allowed_types = [
+      'form',
+      'textarea',
+      'textfield',
+      'tel',
+      'email',
+      'url',
+      'number',
+      'password',
+      'password_confirm'
+    ];
+    if (in_array($type, $allowed_types)) {
+      $types[$type]['#process'][] = 'form_placeholder_process_element';
     }
   }
 }
@@ -30,13 +32,23 @@ function form_placeholder_element_info_alter(array &$types) {
  *
  * @param array $element
  *   The render array element.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The FormStateInterface object for this form
  *
  * @return array
  *   The processed element.
  */
 function form_placeholder_process_element($element, &$form_state) {
+  $form = $form_state->getCompleteForm();
+  $form_placeholder = NULL;
   if (isset($element['#form_placeholder'])) {
-    $action = $element['#form_placeholder'] == TRUE ? 'include' : 'exclude';
+    $form_placeholder = $element['#form_placeholder'];
+  } elseif (isset($form['#form_placeholder'])) {
+    $form_placeholder = $form['#form_placeholder'];
+  }
+
+  if (!is_null($form_placeholder)) {
+    $action = $form_placeholder == TRUE ? 'include' : 'exclude';
     if ($element['#type'] == 'form') {
       $element['#attributes']['class'][] = 'form-placeholder-' . $action . '-children';
     }
