@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
 
   Drupal.form_placeholder = {};
 
@@ -6,14 +6,15 @@
     return $element.is('input[type=text], input[type=date], input[type=email], input[type=url], input[type=tel], input[type=password], textarea');
   };
 
-  Drupal.form_placeholder.placeholderIsSupported = function() {
-    // Opera Mini v7 doesn’t support placeholder although its DOM seems to indicate so.
+  Drupal.form_placeholder.placeholderIsSupported = function () {
+    // Opera Mini v7 doesn’t support placeholder although its DOM seems to
+    // indicate so.
     var isOperaMini = Object.prototype.toString.call(window.operamini) == '[object OperaMini]';
     return 'placeholder' in document.createElement('input') && !isOperaMini;
   };
 
   Drupal.behaviors.form_placeholder = {
-    attach: function(context, settings) {
+    attach: function (context, settings) {
       // In some cases settings after ajax form submit could contain only
       // settings from response but not all Drupal.settings data.
       if (!settings.hasOwnProperty('form_placeholder')) {
@@ -35,7 +36,7 @@
 
       var required_indicator = settings.form_placeholder.required_indicator;
 
-      $(include).not(exclude).each(function() {
+      $(include).not(exclude).each(function () {
         var $textfield = $(this);
         var elementSupported = Drupal.form_placeholder.elementIsSupported($textfield);
         var placeholderSupported = Drupal.form_placeholder.placeholderIsSupported();
