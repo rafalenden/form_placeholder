@@ -19,7 +19,7 @@ function form_placeholder_element_info_alter(array &$types) {
       'url',
       'number',
       'password',
-      'password_confirm'
+      'password_confirm',
     ];
     if (in_array($type, $allowed_types)) {
       $types[$type]['#process'][] = 'form_placeholder_process_element';
@@ -43,7 +43,8 @@ function form_placeholder_process_element($element, &$form_state) {
   $form_placeholder = NULL;
   if (isset($element['#form_placeholder'])) {
     $form_placeholder = $element['#form_placeholder'];
-  } elseif (isset($form['#form_placeholder'])) {
+  }
+  elseif (isset($form['#form_placeholder'])) {
     $form_placeholder = $form['#form_placeholder'];
   }
 
@@ -71,7 +72,7 @@ function form_placeholder_attach(&$element) {
   $config = \Drupal::config('form_placeholder.settings');
 
   // Adding settings.
-  $whitechars = array("\r\n", "\r", "\n");
+  $whitechars = ["\r\n", "\r", "\n"];
   $element['#attached']['drupalSettings']['form_placeholder'] = [
     'include' => str_replace($whitechars, ',', $config->get('included_selectors')),
     'exclude' => str_replace($whitechars, ',', $config->get('excluded_selectors')),

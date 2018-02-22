@@ -4,14 +4,14 @@
   Drupal.form_placeholder = {};
 
   Drupal.form_placeholder.elementIsSupported = function ($element) {
-      var supportedElement = $element.is('input[type=number], input[type=text], input[type=date], input[type=email], input[type=url], input[type=tel], input[type=password], textarea');
-
-      var hasId = $element.attr('id');
-      return supportedElement && hasId;
+    var supportedElement = $element.is('input[type=number], input[type=text], input[type=date], input[type=email], input[type=url], input[type=tel], input[type=password], textarea');
+    var hasId = $element.attr('id');
+    return supportedElement && hasId;
   };
 
   Drupal.form_placeholder.placeholderIsSupported = function () {
-    // Opera Mini v7 doesn’t support placeholder although its DOM seems to indicate so.
+    // Opera Mini v7 doesn’t support placeholder although its DOM seems to
+    // indicate so.
     var isOperaMini = Object.prototype.toString.call(window.operamini) == '[object OperaMini]';
     return 'placeholder' in document.createElement('input') && !isOperaMini;
   };
