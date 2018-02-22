@@ -16,6 +16,7 @@ function form_placeholder_element_info_alter(array &$types) {
       case 'textfield':
       case 'tel':
       case 'url':
+      case 'number':
       case 'password':
       case 'password_confirm':
         $types[$type]['#process'][] = 'form_placeholder_process_element';

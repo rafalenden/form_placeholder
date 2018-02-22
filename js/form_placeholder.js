@@ -4,7 +4,10 @@
   Drupal.form_placeholder = {};
 
   Drupal.form_placeholder.elementIsSupported = function ($element) {
-    return $element.is('input[type=text], input[type=date], input[type=email], input[type=url], input[type=tel], input[type=password], textarea');
+      var supportedElement = $element.is('input[type=number], input[type=text], input[type=date], input[type=email], input[type=url], input[type=tel], input[type=password], textarea');
+
+      var hasId = $element.attr('id');
+      return supportedElement && hasId;
   };
 
   Drupal.form_placeholder.placeholderIsSupported = function () {
